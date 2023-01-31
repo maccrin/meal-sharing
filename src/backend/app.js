@@ -30,24 +30,54 @@ if (process.env.API_PATH) {
   throw "API_PATH is not set. Remember to set it in your .env file"
 }
 app.get("/future-meals", async (req, res) => {
-  const rows = await knex.raw("SELECT * FROM `meal` WHERE `when` >= NOW()");
-  rows[0].length === 0 ? res.status(200).send(`No meals found with future dates`) : res.send(rows.slice(0, 1))
+  try {
+    const rows = await knex.raw("SELECT * FROM `meal` WHERE `when` >= NOW()");
+    rows[0].length === 0 ? res.status(200).send(`no meals found in future dates`) : res.send(rows.slice(0, 1))
+  }
+  catch (e) {
+    res.statusCode = 500;
+    res.send(e.message);
+  }
 });
 app.get("/past-meals", async (req, res) => {
-  const rows = await knex.raw("SELECT * FROM `meal` WHERE `when` < NOW()");
-  rows[0].length === 0 ? res.status(200).send(`No meals found in past time`) : res.send(rows.slice(0, 1))
+  try {
+    const rows = await knex.raw("SELECT * FROM `meal` WHERE `when` < NOW()");
+    rows[0].length === 0 ? res.status(200).send(`No meals found in past time`) : res.send(rows.slice(0, 1))
+  }
+  catch (e) {
+    res.statusCode = 500;
+    res.send(e.message);
+  }
 });
 app.get("/all-meals", async (req, res) => {
-  const rows = await knex.raw("SELECT * FROM `meal`  ORDER BY `id`");
-  rows[0].length === 0 ? res.status(200).send(`No meals found`) : res.send(rows.slice(0, 1))
+  try {
+    const rows = await knex.raw("SELECT * FROM `meal`  ORDER BY `id`");
+    rows[0].length === 0 ? res.status(200).send(`No meals found`) : res.send(rows.slice(0, 1))
+  }
+  catch (e) {
+    res.statusCode = 500;
+    res.send(e.message);
+  }
 });
 app.get("/first-meal", async (req, res) => {
-  const rows = await knex.raw("SELECT * FROM `meal` ORDER BY `id` LIMIT 1");
-  rows[0].length === 0 ? res.status(200).send(`No meals found`) : res.send(rows.slice(0, 1))
+  try {
+    const rows = await knex.raw("SELECT * FROM `meal` ORDER BY `id` LIMIT 1");
+    rows[0].length === 0 ? res.status(200).send(`No meals found`) : res.send(rows.slice(0, 1))
+  }
+  catch (e) {
+    res.statusCode = 500;
+    res.send(e.message);
+  }
 });
 app.get("/last-meal", async (req, res) => {
-  const rows = await knex.raw("SELECT * FROM `meal` ORDER BY `id` desc");
-  rows[0].length === 0 ? res.status(200).send(`No meals found`) : res.send(rows.slice(0, 1))
+  try {
+    const rows = await knex.raw("SELECT * FROM `meal` ORDER BY `id` desc");
+    rows[0].length === 0 ? res.status(200).send(`No meals found`) : res.send(rows.slice(0, 1))
+  }
+  catch (e) {
+    res.statusCode = 500;
+    res.send(e.message);
+  }
 });
 
 // for the frontend. Will first be covered in the react class
