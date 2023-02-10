@@ -47,7 +47,11 @@ router.put("/:id", async (req, res) => {
     try {
         const updatedReservation = await knex('reservation')
             .where({ id: reserveId })
-            .update({ contact_name: req.body.contact_name })
+            .update({
+                contact_name: req.body.contact_name,
+                number_of_guests: req.body.number_of_guests,
+                contact_phone: req.body.conact_phone
+            })
         updatedReservation ? res.status(200).json({ UpdatedReservation: updatedReservation }) : res.status(404).send(`ID doesn't exist`)
     }
     catch (e) {
