@@ -5,6 +5,7 @@ const path = require("path");
 const knex = require("../backend/database");
 const mealsRouter = require("./api/meals");
 const reservRouter = require("./api/reservations");
+const reviewRouter = require("./api/reviews")
 const buildPath = path.join(__dirname, "../../dist");
 const port = process.env.PORT || 3000;
 const cors = require("cors");
@@ -21,7 +22,8 @@ app.use(express.json());
 app.use(cors());
 
 router.use("/meals", mealsRouter);
-router.use("/reserve", reservRouter)
+router.use("/reserve", reservRouter);
+router.use("/reviews", reviewRouter)
 app.get('/my-route', (req, res) => {
   res.send("Hi friend");
 });
