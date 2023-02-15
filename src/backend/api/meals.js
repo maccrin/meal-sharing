@@ -90,6 +90,21 @@ router.get("/:id", async (request, response) => {
     response.status(503).send(`${error.message}`)
   }
 });
+router.get("/:meal_id/reviews", async (req, res) => {
+  try {
+    const meal = await knex("meal")
+      .select("id", "title")
+      .where("id", "=", `${parseInt(req.params.meal_id)}$`);
+    if (meal.length === 0) return res.status(404).send(`mealid doesn't exists`)
+    const review = await knex("review")
+      .select("*")
+      .where("meal_id", "=", `${parseInt(req.params.meal_id)}$`);
+    review.length === 0 ? res.status(404).send(`No review found for this meal id`) : res.status(200).json(review)
+  }
+  catch (e) {
+    res.status(503).send(`${e.message}`)
+  }
+})
 
 
 router.post("/", async (request, response) => {
