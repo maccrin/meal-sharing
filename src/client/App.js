@@ -9,6 +9,7 @@ function App() {
       <Route exact path="/">
         <Meal />
       </Route>
+
     </Router>
   );
 }
