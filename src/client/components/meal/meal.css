@@ -1,0 +1,32 @@
+body {
+    font-family: 'Times New Roman', Times, serif;
+    background-color: #cfc2cb;
+}
+.meal  {
+  display: grid;
+  grid-template-columns: 4fr 6fr 4fr;
+}
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+
+}
+ul li p:first-child {
+    font-weight: bolder;
+}
+.container{
+    padding: 2rem;
+    margin:auto;
+    text-align: center;
+    color: rgb(5, 28, 21);
+    font-style: italic;
+}
+.click{
+    
+    background-color:#ced8d3;
+    color: black;
+    font-weight: bolder;
+   font-style: unset ;
+   border-radius:10px;
+}
