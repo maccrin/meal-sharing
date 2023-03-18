@@ -14,20 +14,20 @@ const mealReducer = (state, action) => {
             return {
                 ...state,
                 data: action.payload.sort((meal1, meal2) => parseInt(meal1.price) - parseInt(meal2.price))
-            }
+            };
         case "SUCCESS":
             return {
                 ...state,
                 data: action.payload,
                 isLoading: false,
                 isError: false
-            }
+            };
         case "Failures":
             return {
                 ...state,
                 isLoading: false,
                 isError: true
-            }
+            };
         default:
             throw new Error();
     }

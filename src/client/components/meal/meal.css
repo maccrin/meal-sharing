@@ -4,7 +4,7 @@ body {
 }
 .meal  {
   display: grid;
-  grid-template-columns: 4fr 6fr 4fr;
+  grid-template-columns: 4fr 5fr 4fr;
 }
 ul {
     list-style-type: none;

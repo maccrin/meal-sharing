@@ -15,7 +15,7 @@ const MealList = () => {
           })
         }
       >
-        Price Low To High
+        Price Low-To-High
       </button>
       <ul className="meal">
         {usingContext.currentMeals.data.map(({ id, ...eachResult }) => (
