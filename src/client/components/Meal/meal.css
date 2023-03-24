@@ -1,8 +1,9 @@
 body {
     font-family: 'Times New Roman', Times, serif;
-    background-color: #cfc2cb;
+    background-color: #c3cdb7;
 }
 .meal  {
+    padding-top: 1rem;
   display: grid;
   grid-template-columns: 4fr 5fr 4fr;
 }
@@ -23,10 +24,27 @@ ul li p:first-child {
     font-style: italic;
 }
 .click{
-    
-    background-color:#ced8d3;
-    color: black;
+   color:#211f20;
+    background-color:#9bbdac;
     font-weight: bolder;
    font-style: unset ;
    border-radius:10px;
+}
+.list
+{
+    margin: 1rem;
+box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+ rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+} 
+
+.mealroute{
+    display: inline;
+    font-style:oblique;
+     display: flex;
+    justify-content: space-between;
+}
+.reserve{
+  color:#211f20;
+    background-color:#9bbdac;
+    
 }

@@ -1,0 +1,27 @@
+
+body {
+    font-family: 'Times New Roman', Times, serif;
+    background-color: #cfc2cb;
+ /* background-image: url('../../assets/images/star-anise.jpg'); */
+}
+.title{
+    padding: 1rem;
+    font-style: italic;
+    color: #312a2f;
+}
+.home{
+    width: fit-content;
+    /* text-align: center; */
+     /* display: grid;
+  grid-template-columns: 1fr; */
+}
+.homebutton{
+    margin-left: 10rem;
+ background-color:#e3dad8;
+ width:200px;
+    color: black;
+    font-weight: bolder;
+   font-style: unset ;
+   border-radius:5px;
+   box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}

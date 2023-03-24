@@ -1,26 +1,31 @@
 import React, { useContext } from "react";
-import Meal from "../Meal/Meal";
-import { MealContext } from "../Context/MealContext";
+import { Link } from "react-router-dom";
+//import Meal from "../Meal/Meal";
+import { useMealContext } from "../Context/MealContext";
 import "../Meal/meal.css";
 const MealList = () => {
-  const usingContext = useContext(MealContext);
+  const { currentMeals, dispatchMeals } = useMealContext();
   return (
     <div className="container">
+      <h2>Here is all list of Meals</h2>
+      <h4>Click on each meal to get details</h4>
       <button
         className="click"
         onClick={() =>
-          usingContext.dispatchMeals({
+          dispatchMeals({
             type: "SORT",
-            payload: usingContext.currentMeals.data,
+            payload: currentMeals.data,
           })
         }
       >
         Price Low-To-High
       </button>
       <ul className="meal">
-        {usingContext.currentMeals.data.map(({ id, ...eachResult }) => (
-          <li key={id}>
-            <Meal value={eachResult} />
+        {currentMeals.data.map((eachMeal) => (
+          <li className="list" key={eachMeal.id}>
+            <Link to={`/meals/${eachMeal.id}`}>
+              {eachMeal.title}-<b>{eachMeal.price}</b>
+            </Link>
           </li>
         ))}
       </ul>

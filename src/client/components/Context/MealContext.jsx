@@ -1,6 +1,12 @@
-import React, { useEffect, useState, useReducer, createContext } from "react";
+import React, {
+  useEffect,
+  useState,
+  useReducer,
+  createContext,
+  useContext,
+} from "react";
 export const MealContext = createContext();
-
+console.log("hello");
 const mealReducer = (state, action) => {
   console.log(state, action.type, action.payload);
   switch (action.type) {
@@ -16,6 +22,8 @@ const mealReducer = (state, action) => {
         data: action.payload.sort(
           (meal1, meal2) => parseInt(meal1.price) - parseInt(meal2.price)
         ),
+        isLoading: true,
+        isError: false,
       };
     case "SUCCESS":
       return {
@@ -34,7 +42,7 @@ const mealReducer = (state, action) => {
       throw new Error();
   }
 };
-const MealProvider = ({ children }) => {
+export const MealProvider = ({ children }) => {
   const [currentMeals, dispatchMeals] = useReducer(mealReducer, {
     data: [],
     isLoading: false,
@@ -47,20 +55,22 @@ const MealProvider = ({ children }) => {
       try {
         const data = await fetch("api/meals");
         const result = await data.json();
-        console.log(result);
         dispatchMeals({ type: "SUCCESS", payload: result });
       } catch {
         () => dispatchMeals({ type: "Failures" });
       }
     })();
   }, []);
-
+  const getMeal = (mealId) => {
+    console.log(currentMeals);
+    //if (!currentMeals) return undefined;
+    return currentMeals.data.find((aMeal) => aMeal.id === Number(mealId));
+  };
+  const contextState = { currentMeals, dispatchMeals, getMeal };
   return (
-    <div>
-      <MealContext.Provider value={{ currentMeals, dispatchMeals }}>
-        {children}
-      </MealContext.Provider>
-    </div>
+    <MealContext.Provider value={contextState}>{children}</MealContext.Provider>
   );
 };
-export { MealProvider };
+export function useMealContext() {
+  return useContext(MealContext);
+}

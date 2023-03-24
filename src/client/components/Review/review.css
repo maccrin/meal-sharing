@@ -1,0 +1,42 @@
+
+body {
+    font-family: 'Times New Roman', Times, serif;
+   background-color: #c3cdb7;
+}
+.wrapper{
+    padding: 5rem;
+    margin-top:5rem;
+    text-align: center;
+    color: rgb(5, 28, 21);
+    font-style: italic;
+}
+.reviewform{
+  display: grid;
+  grid-template-columns: 1fr;
+  height: 200px;
+  width:400px;
+}
+button {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  
+}
+.on {
+  height: 30px;
+  width:30px;
+  color: #106037;
+}
+.off {
+  height: 30px;
+  width:30px;
+  color: #827979;
+}
+.reviewbutton{
+   color:#211f20;
+    background-color:#9bbdac;
+    font-weight: bolder;
+   font-style: unset ;
+   border-radius:10px;
+}
