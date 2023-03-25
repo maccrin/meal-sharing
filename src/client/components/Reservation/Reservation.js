@@ -68,7 +68,7 @@ const Reservation = () => {
                             <input type="email"
                                 id="contact_email" value={form.contact_email} onChange={handleChange}></input>
                         </div>
-                        <button type="submit">Book This Meal</button>
+                        <button className="booked" type="submit">Book This Meal</button>
                     </fieldset>
                 </form>
             ) : (

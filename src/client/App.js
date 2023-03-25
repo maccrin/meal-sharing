@@ -7,18 +7,25 @@ import Review from './components/Review/Review'
 import Meal from './components/Meal/Meal'
 import MealList from "./components/MealList/MealList";
 import { MealProvider } from "./components/Context/MealContext";
+import Navigation from "./components/Navigation/Navigation"
+import Footer from "./components/Footer/Footer";
+import MealReview from "./components/ReviewPage/ReviewPg"
 
 export default function App() {
   return (
     < MealProvider >
       <div>
         <Router>
+          <Navigation />
           <Switch>
             <Route exact path="/">
               <Home />
             </Route>
             <Route exact path="/meals">
               <MealList />
+            </Route>
+            <Route exact path="/Review">
+              <MealReview />
             </Route>
             <Route exact path="/meals/:id">
               <Meal />
@@ -29,10 +36,12 @@ export default function App() {
             <Route exact path="/review/:id">
               <Review />
             </Route>
+
             <Route component={ErrorPage}>
               <ErrorPage />
             </Route>
           </Switch>
+          <Footer />
         </Router>
       </div >
     </MealProvider>

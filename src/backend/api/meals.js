@@ -92,7 +92,7 @@ router.get("/", async (request, response) => {
     }
     if (request.query.review === 'avg') {
       query = query.select("meal.title", "meal.id", "meal.price", "meal.description", "meal.location",
-        knex.raw("count(review.stars) as total_review"), knex.raw("avg(review.stars) as avg_star"))
+        knex.raw("count(review.stars) as total_review"), knex.raw("avg(review.stars) as avg_review"))
         .join("review", "meal.id", "=", "review.meal_id")
         .groupBy("review.meal_id")
 

@@ -26,7 +26,6 @@ const Review = () => {
         console.log(form.created_date)
         form.stars = rating;
         try {
-            console.log('hello')
             const response = await fetch(`api/reviews`, {
                 method: 'POST',
                 body: JSON.stringify(form),

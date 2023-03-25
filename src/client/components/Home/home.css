@@ -1,13 +1,33 @@
 
 body {
     font-family: 'Times New Roman', Times, serif;
-    background-color: #cfc2cb;
+
  /* background-image: url('../../assets/images/star-anise.jpg'); */
 }
-.title{
-    padding: 1rem;
+.homecontainer{
+    /* width:100%; */
+    position:fixed;
+    top:0;
+    left: 0;
+     padding-left:5rem;
+   padding-right:5rem;
+ margin-left:10rem;
+   margin-right:15rem;
+  
+}
+.heading{
+   text-shadow:1px 1px 2px pink;
+  padding-top: 1rem;
     font-style: italic;
-    color: #312a2f;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color:rgb(2, 33, 23);
+   
+}
+
+.text{
+    padding-top:1rem;
+    font-style: oblique 23deg;
+    font-family: 'Lucida Sans', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 .home{
     width: fit-content;
@@ -16,12 +36,14 @@ body {
   grid-template-columns: 1fr; */
 }
 .homebutton{
-    margin-left: 10rem;
- background-color:#e3dad8;
+    margin-bottom: 5rem;
+    margin-left: 15rem;
+ color:#211f20;
+    background-color:#9bbdac;
+     background-image:linear-gradient(to left, #95c297, #86a08e);
  width:200px;
-    color: black;
-    font-weight: bolder;
-   font-style: unset ;
+  font-weight: bolder;
+   font-style: italic ;
    border-radius:5px;
    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }

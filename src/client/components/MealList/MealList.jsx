@@ -7,7 +7,7 @@ const MealList = () => {
   const { currentMeals, dispatchMeals } = useMealContext();
   return (
     <div className="container">
-      <h2>Here is all list of Meals</h2>
+      <h2 className="head">List of Meals</h2>
       <h4>Click on each meal to get details</h4>
       <button
         className="click"

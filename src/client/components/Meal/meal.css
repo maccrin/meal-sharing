@@ -1,5 +1,5 @@
 body {
-    font-family: 'Times New Roman', Times, serif;
+ font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     background-color: #c3cdb7;
 }
 .meal  {
@@ -16,12 +16,18 @@ ul {
 ul li p:first-child {
     font-weight: bolder;
 }
+/* .head{
+    background-image:linear-gradient(to left, #7ecc80, #86a08e);;
+} */
 .container{
     padding: 2rem;
     margin:auto;
     text-align: center;
     color: rgb(5, 28, 21);
     font-style: italic;
+}
+.head{
+ text-shadow:  1px 2px pink;
 }
 .click{
    color:#211f20;
@@ -32,6 +38,7 @@ ul li p:first-child {
 }
 .list
 {
+      background-image:linear-gradient(to left, #95c297, #86a08e);
     margin: 1rem;
 box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
  rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
@@ -44,6 +51,7 @@ box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 
     justify-content: space-between;
 }
 .reserve{
+     background-image:linear-gradient(to left, #95c297, #86a08e);
   color:#211f20;
     background-color:#9bbdac;
     

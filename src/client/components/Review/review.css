@@ -36,7 +36,10 @@ button {
 .reviewbutton{
    color:#211f20;
     background-color:#9bbdac;
+      background-image:linear-gradient(to left, #95c297, #86a08e);
+   /* color:#211f20;
+    background-color:#9bbdac;
     font-weight: bolder;
-   font-style: unset ;
+   font-style: unset ; */
    border-radius:10px;
 }
