@@ -5,18 +5,16 @@
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     color:rgb(2, 33, 23);
 }
-
+.reviewheading h2{
+  font-stretch: expanded;
+}
 .reviewlist{
-    /* width:100%; */
+
      position:absolute;
     top:0;
     left: 0;
     margin-top: 5rem;
     margin-left: 3rem;
-     /* padding-left:5rem;
-   padding-right:5rem;
- margin-left:10rem;
-   margin-right:10rem; */
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   display: grid;
   grid-template-columns: 1fr 1fr  1fr;

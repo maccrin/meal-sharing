@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Link, useParams, useHistory } from "react-router-dom";
+import { Link, useParams, useHistory, Redirect } from "react-router-dom";
 import { useMealContext } from "../Context/MealContext";
+import EachMealReview from "../MealReview/MealReview";
 import "./meal.css";
 const Meal = () => {
   const [availableSlot, setAvailableSlot] = useState([]);
@@ -11,29 +12,31 @@ const Meal = () => {
   useEffect(() => {
     (async () => {
       try {
-        const data = await fetch("api/meals?availableReservations=true");
-        const result = await data.json();
-        setAvailableSlot(result);
+        const res = await fetch(`api/meals/${id}/reservations`);
+        if (res.ok) {
+          const result = await res.json();
+          console.log(result);
+          console.log(result[0].available_slot);
+          setAvailableSlot(result[0].available_slot);
+        }
       } catch (e) {
         return e.message;
       }
     })();
   }, [id]);
   const handleReservation = () => {
-    const available = availableSlot.find((eachMeal) => eachMeal.id === meal.id);
-    if (available.available_slot > 0) {
-      console.log(available.available_slot);
+    if (availableSlot > 0) {
       alert(`Redirect to Reservation Page`);
-      history.push(`/reservations/${meal.id}/${available.available_slot}`);
+      history.push(`/reservations/${meal.id}/${availableSlot}`);
     } else {
       alert(`No Reservation available for this meal`);
       history.push("/meals");
     }
   };
 
-  // if (!meal) {
-  //   return history.push("/");
-  // }
+  if (!meal) {
+    return <Redirect to="/" />;
+  }
 
   return (
     <div className="container">
@@ -44,7 +47,12 @@ const Meal = () => {
           <p>Price:{meal.price}</p>
           <p>Description:{meal.description}</p>
           <p>Location:{meal.location}</p>
-          <p>Max_Reservation:{meal.max_reservations}</p>
+          {availableSlot > 0 ? (
+            <p>{` Available Slot ${availableSlot}`}</p>
+          ) : (
+            <p>{`No Seats are avilable`}</p>
+          )}
+          <EachMealReview meal={meal} />
           <>
             <div className="mealroute">
               <button className="reserve" onClick={handleReservation}>

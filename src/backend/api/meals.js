@@ -29,8 +29,20 @@ router.get("/", async (request, response) => {
     }
     if ("title" in request.query) {
       const title = request.query.title;
-      query = query.where("title", "like", `%${title}%`)
+      if (title) query = query.where("title", "like", `%${title}%`)
+      else {
+        query = knex('meal')
+      }
 
+    }
+    if ("title" in request.query) {
+      const search = request.query.title;
+      query = query.where("title", "like", `%${search}%`)
+
+    }
+    if ("search" in request.query) {
+      const search1 = request.query.search;
+      query = query.where("search", "like", `%${search1}`)
     }
 
     if ("dateAfter" in request.query) {
@@ -136,6 +148,29 @@ router.get("/:id", async (request, response) => {
     response.status(503).send(`${error.message}`)
   }
 });
+router.get("/:meal_id/reservations", async (req, res) => {
+  const mealId = parseInt(req.params.meal_id);
+  let query = knex('meal');
+  query = query
+    .select("meal.title", "meal.price", "meal.id",
+      knex.raw(
+        "meal.max_reservations-ifnull( sum(reservation.number_of_guests),0 )as 'available_slot'"
+      )
+    )
+    .leftJoin("reservation", { "meal.id": "reservation.meal_id" }).where("meal.id", mealId).groupBy(
+      "meal.id",
+      "meal.title",
+      "meal.description",
+      "meal.location",
+      "meal.when",
+      "meal.max_reservations",
+      "meal.price",
+      "meal.created_date"
+    )
+    .having("meal.max_reservations", ">", "totalReservations");
+  const data = await query;
+  data.length ? res.status(200).json(data) : res.send(`No meal Found`);
+})
 router.get("/:meal_id/reviews", async (req, res) => {
   try {
     const meal = await knex("meal")
