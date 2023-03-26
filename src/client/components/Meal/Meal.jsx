@@ -13,7 +13,6 @@ const Meal = () => {
       try {
         const data = await fetch("api/meals?availableReservations=true");
         const result = await data.json();
-        console.log(result);
         setAvailableSlot(result);
       } catch (e) {
         return e.message;
@@ -21,10 +20,8 @@ const Meal = () => {
     })();
   }, [id]);
   const handleReservation = () => {
-    const available = availableSlot.find(
-      ({ id, available_slot }) => id === meal.id
-    );
-    if (available) {
+    const available = availableSlot.find((eachMeal) => eachMeal.id === meal.id);
+    if (available.available_slot > 0) {
       console.log(available.available_slot);
       alert(`Redirect to Reservation Page`);
       history.push(`/reservations/${meal.id}/${available.available_slot}`);
@@ -47,7 +44,7 @@ const Meal = () => {
           <p>Price:{meal.price}</p>
           <p>Description:{meal.description}</p>
           <p>Location:{meal.location}</p>
-          <p>Reservation:{meal.max_reservations}</p>
+          <p>Max_Reservation:{meal.max_reservations}</p>
           <>
             <div className="mealroute">
               <button className="reserve" onClick={handleReservation}>
