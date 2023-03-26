@@ -84,10 +84,28 @@ router.get("/", async (request, response) => {
       }
     }
     if (request.query.availableReservations === 'true') {
-      query = query.select("meal.title", "meal.id",
-        knex.raw("(meal.max_reservations -  sum(reservation.number_of_guests)) as available_slot"))
-        .join("reservation", "meal.id", "=", "reservation.meal_id")
-        .groupBy("reservation.meal_id").having("available_slot", ">", "0")
+      // query = query.select("meal.title", "meal.id",
+      //   knex.raw("(meal.max_reservations -  sum(reservation.number_of_guests)) as available_slot"))
+      //   .join("reservation", "meal.id", "=", "reservation.meal_id")
+      //   .groupBy("reservation.meal_id").having("available_slot", ">", "0")
+      query = query
+        .select("meal.title", "meal.price", "meal.id",
+          knex.raw(
+            "meal.max_reservations-ifnull( sum(reservation.number_of_guests),0 )as 'available_slot'"
+          )
+        )
+        .leftJoin("reservation", { "meal.id": "reservation.meal_id" })
+        .groupBy(
+          "meal.id",
+          "meal.title",
+          "meal.description",
+          "meal.location",
+          "meal.when",
+          "meal.max_reservations",
+          "meal.price",
+          "meal.created_date"
+        )
+        .having("meal.max_reservations", ">", "totalReservations");
 
     }
     if (request.query.review === 'avg') {
