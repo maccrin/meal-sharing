@@ -7,12 +7,15 @@ const Meal = () => {
   const [availableSlot, setAvailableSlot] = useState([]);
   const { id } = useParams();
   const history = useHistory();
-  const { currentMeals, dispatchMeals, getMeal } = useMealContext();
+  const { getMeal } = useMealContext();
   const meal = getMeal(id);
+  const abortController = new AbortController();
   useEffect(() => {
     (async () => {
       try {
-        const res = await fetch(`api/meals/${id}/reservations`);
+        const res = await fetch(`api/meals/${id}/reservations`, {
+          signal: abortController.signal,
+        });
         if (res.ok) {
           const result = await res.json();
           console.log(result);
@@ -23,6 +26,9 @@ const Meal = () => {
         return e.message;
       }
     })();
+    return () => {
+      abortController.abort();
+    };
   }, [id]);
   const handleReservation = () => {
     if (availableSlot > 0) {
@@ -42,7 +48,7 @@ const Meal = () => {
     <div className="container">
       {meal ? (
         <>
-          <h2>Here is your meal&nbsp;&nbsp;</h2>
+          <h2>Here is your Meal Card&nbsp;&nbsp;</h2>
           <b>{meal.title}</b>
           <p>Price:{meal.price}</p>
           <p>Description:{meal.description}</p>
@@ -50,7 +56,7 @@ const Meal = () => {
           {availableSlot > 0 ? (
             <p>{` Available Slot ${availableSlot}`}</p>
           ) : (
-            <p>{`No Seats are avilable`}</p>
+            <p>{`No Slots are avilable`}</p>
           )}
           <EachMealReview meal={meal} />
           <>

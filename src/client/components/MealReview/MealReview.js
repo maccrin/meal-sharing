@@ -27,7 +27,6 @@ const EachMealReview = ({ meal }) => {
                     <button type="button"
                         key={eachStar}
                         className={eachStar <= star ? "on" : "off"}>
-
                         <span className="star">&#9733;</span>
                     </button>)
             })}

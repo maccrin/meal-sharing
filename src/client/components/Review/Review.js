@@ -1,10 +1,10 @@
 import React, { useContext, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { useMealContext } from "../Context/MealContext";
 import FaStar from "react-icons/fa";
 import './review.css'
-
+import { useMealContext } from "../Context/MealContext";
 const Review = () => {
+    const { currentMeals, dispatchMeals, getMeal } = useMealContext();
     const [rating, setRating] = useState(0)
     const [error, setError] = useState(false);
     const INITIAL_STATE = {
@@ -13,7 +13,6 @@ const Review = () => {
     }
     const [form, setForm] = useState(INITIAL_STATE);
     const { id } = useParams();
-    const { currentMeals, dispatchMeals, getMeal } = useMealContext();
     const meal = getMeal(id);
     const handleChange = (e) => {
         setForm({ ...form, [e.target.id]: e.target.value })
@@ -35,13 +34,11 @@ const Review = () => {
                 }
             })
             const data = await response.json();
-            console.log(data)
             setForm(INITIAL_STATE)
             alert(`Review Sent`)
         }
         catch (e) {
             setError(true);
-            alert(`${e.message}`)
             return e.message;
         }
 
@@ -78,9 +75,6 @@ const Review = () => {
             ) : (
                 <h3>There is no meal for this specific id</h3>
             )}
-            <Link to={`/`}>
-                Go To Home
-            </Link>
         </div>
     )
 }

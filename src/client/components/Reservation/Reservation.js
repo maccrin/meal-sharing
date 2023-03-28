@@ -1,8 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { useMealContext } from "../Context/MealContext";
 import './reserve.css'
-
+import { useMealContext } from "../Context/MealContext";
 const Reservation = () => {
     const [error, setError] = useState(false);
     const INITIAL_STATE = {
@@ -11,9 +10,9 @@ const Reservation = () => {
         contact_name: '',
         contact_email: ''
     }
+    const { currentMeals, dispatchMeals, getMeal } = useMealContext();
     const [form, setForm] = useState(INITIAL_STATE);
     const { id, available_slot } = useParams();
-    const { currentMeals, dispatchMeals, getMeal } = useMealContext();
     const meal = getMeal(id);
     const handleChange = (e) => {
         setForm({ ...form, [e.target.id]: e.target.value })

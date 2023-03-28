@@ -7,20 +7,11 @@ import React, {
 } from "react";
 export const MealContext = createContext();
 const mealReducer = (state, action) => {
-  console.log(state, action.type, action.payload);
+  console.log(action.payload);
   switch (action.type) {
     case "FETCH-INIT":
       return {
         ...state,
-        isLoading: true,
-        isError: false,
-      };
-    case "SORT":
-      return {
-        ...state,
-        data: action.payload.sort(
-          (meal1, meal2) => parseInt(meal1.price) - parseInt(meal2.price)
-        ),
         isLoading: true,
         isError: false,
       };
@@ -53,10 +44,8 @@ export const MealProvider = ({ children }) => {
     (async () => {
       dispatchMeals({ type: "FETCH-INIT" });
       try {
-        // const data = await fetch("api/meals");
         const data = await fetch(`api/meals?title=${searchQuery}`);
         const result = await data.json();
-        console.log(result);
         dispatchMeals({ type: "SUCCESS", payload: result });
       } catch {
         () => dispatchMeals({ type: "Failures" });
@@ -64,14 +53,13 @@ export const MealProvider = ({ children }) => {
     })();
   }, [searchQuery]);
   const handleChange = (e) => {
-    console.log(e.target.value);
     setSearchQuery(e.target.value);
   };
   const getMeal = (mealId) => {
-    console.log(currentMeals);
-    //if (!currentMeals) return undefined;
+    if (!currentMeals.data) return undefined;
     return currentMeals.data.find((aMeal) => aMeal.id === Number(mealId));
   };
+
   const contextState = {
     currentMeals,
     dispatchMeals,
