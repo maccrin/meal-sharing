@@ -2,13 +2,14 @@ import React, { useEffect, useState } from "react";
 import './mealreview.css';
 const EachMealReview = ({ meal }) => {
     const meal_id = meal.id
-    console.log(meal_id);
     const [star, setStar] = useState(0);
+    const abortController = new AbortController();
     useEffect(() => {
         (async () => {
             try {
-                const res = await fetch(`api/meals/${meal_id}/reviews`);
-                console.log(res)
+                const res = await fetch(`api/meals/${meal_id}/reviews`, {
+                    signal: abortController.signal,
+                });
                 if (res.ok) {
                     const result = await res.json();
                     const avgStars = result.reduce((accu, curr) => (accu + curr.stars), 0) / result.length
@@ -18,7 +19,9 @@ const EachMealReview = ({ meal }) => {
                 return e.message;
             }
         })();
-
+        return () => {
+            abortController.abort();
+        };
     }, [meal_id])
     return (
         <div>

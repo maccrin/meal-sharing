@@ -7,7 +7,6 @@ import React, {
 } from "react";
 export const MealContext = createContext();
 const mealReducer = (state, action) => {
-  console.log(action.payload);
   switch (action.type) {
     case "FETCH-INIT":
       return {

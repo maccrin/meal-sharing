@@ -1,5 +1,5 @@
-import React, { useContext, useEffect, useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import './reviewpg.css';
 const MealReview = () => {
     const [rating, setRating] = useState(0);
@@ -7,7 +7,6 @@ const MealReview = () => {
     const [reviewMeal, setReviewMeal] = useState([]);
     const [error, setError] = useState(false);
     const [loading, setLoading] = useState(true)
-    const history = useHistory();
     const abortController = new AbortController();
     useEffect(() => {
         (async () => {
@@ -29,7 +28,6 @@ const MealReview = () => {
                 setError(true);
                 setLoading(false)
                 return e.message;
-
             }
         })();
         return () => {
@@ -42,7 +40,7 @@ const MealReview = () => {
             {error && <p>Something went wrong</p>}
             <div className="reviewheading">
                 <h2>
-                    Click On Each Meal To Submit Review
+                    Average Review Of Each Meal
                 </h2></div>
             <div className="reviewcontainer">
                 {loading ? (<p>...Loading</p>) : (<ul className="reviewlist">

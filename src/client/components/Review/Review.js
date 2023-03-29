@@ -1,10 +1,11 @@
-import React, { useContext, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import React, { useState } from "react";
+import { useParams, useHistory } from "react-router-dom";
 import FaStar from "react-icons/fa";
 import './review.css'
 import { useMealContext } from "../Context/MealContext";
 const Review = () => {
     const { currentMeals, dispatchMeals, getMeal } = useMealContext();
+    const history = useHistory();
     const [rating, setRating] = useState(0)
     const [error, setError] = useState(false);
     const INITIAL_STATE = {
@@ -41,6 +42,7 @@ const Review = () => {
             setError(true);
             return e.message;
         }
+        history.push("/meals");
 
     }
     return (

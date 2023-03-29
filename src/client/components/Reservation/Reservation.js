@@ -1,7 +1,7 @@
-import React, { useContext, useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
-import './reserve.css'
+import React, { useState, } from "react";
+import { useParams, Redirect, useHistory, useLocation } from "react-router-dom";
 import { useMealContext } from "../Context/MealContext";
+import './reserve.css';
 const Reservation = () => {
     const [error, setError] = useState(false);
     const INITIAL_STATE = {
@@ -10,22 +10,28 @@ const Reservation = () => {
         contact_name: '',
         contact_email: ''
     }
-    const { currentMeals, dispatchMeals, getMeal } = useMealContext();
+    const history = useHistory();
+    const location = useLocation();
+    if (!location.state) {
+        return <Redirect to="/" />
+    }
+    const availableSlot = (location.state.data)
+    const { getMeal } = useMealContext();
     const [form, setForm] = useState(INITIAL_STATE);
-    const { id, available_slot } = useParams();
+    const { id } = useParams();
     const meal = getMeal(id);
     const handleChange = (e) => {
         setForm({ ...form, [e.target.id]: e.target.value })
     }
     const handleChangeMaxSlot = (e) => {
-        if (e.target.value === available_slot) alert(`Maximum available slot is ${available_slot}`)
+        if (e.target.value === 3)
+            alert('You Reached to Maximum Slots')
         setForm({ ...form, [e.target.id]: e.target.value })
     }
     const handleSubmit = async (e) => {
         e.preventDefault();
         form.meal_id = meal.id;
         form.created_date = new Date().toJSON().slice(0, 10)
-        console.log(form.created_date)
         try {
             const response = await fetch(`api/reserve`, {
                 method: 'POST',
@@ -37,15 +43,14 @@ const Reservation = () => {
             })
             const data = await response.json();
             alert(`Meal Booked`);
-            console.log(data)
-            setForm(INITIAL_STATE)
+            setForm(INITIAL_STATE);
         }
         catch (e) {
             setError(true);
-            alert(`${e.message}`)
             return e.message;
         }
 
+        history.push("/meals")
     }
     return (
         <div className="wrapper">{error && alert('Resquest is not sucessful')}
@@ -55,7 +60,7 @@ const Reservation = () => {
                         <legend><span>Reservation Form</span></legend>
                         <div className="reserveform">
                             <label htmlFor="number_of_guests">Number Of Guests</label>
-                            <input type="number" min={1} max={available_slot} required
+                            <input type="number" min={1} max={availableSlot} required
                                 id="number_of_guests" value={form.number_of_guests} onChange={handleChangeMaxSlot}></input>
                             <label htmlFor="contact_phone_number">Contact Phone Number</label>
                             <input type="tel" required placeholder="123-4567-8901"
@@ -71,11 +76,8 @@ const Reservation = () => {
                     </fieldset>
                 </form>
             ) : (
-                <h3>There is no meal for this specific id</h3>
+                <h3>There is no Meal for this specific id</h3>
             )}
-            <Link to={`/`}>
-                Go To Home
-            </Link>
         </div>
     )
 }

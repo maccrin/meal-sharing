@@ -6,7 +6,6 @@ import React, {
 
 export const MealSortContext = createContext();
 const sortedMealReducer = (state, action) => {
-    console.log(action.payload);
     switch (action.type) {
         case "Load":
             return {
@@ -35,7 +34,6 @@ export const SortedMealProvider = ({ children }) => {
 
 
     const fetchMeal = async (fetchUrl) => {
-
         try {
             const res = await fetch(fetchUrl);
             if (res.ok) {

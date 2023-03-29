@@ -1,5 +1,5 @@
-import React, { useContext, useEffect, useState } from "react";
-import { Link, useParams, useHistory, Redirect } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useParams, useHistory, Redirect } from "react-router-dom";
 import { useMealContext } from "../Context/MealContext";
 import EachMealReview from "../MealReview/MealReview";
 import "./meal.css";
@@ -18,8 +18,6 @@ const Meal = () => {
         });
         if (res.ok) {
           const result = await res.json();
-          console.log(result);
-          console.log(result[0].available_slot);
           setAvailableSlot(result[0].available_slot);
         }
       } catch (e) {
@@ -33,7 +31,10 @@ const Meal = () => {
   const handleReservation = () => {
     if (availableSlot > 0) {
       alert(`Redirect to Reservation Page`);
-      history.push(`/reservations/${meal.id}/${availableSlot}`);
+      history.push({
+        pathname: `/reservations/${meal.id}/${availableSlot}`,
+        state: { data: `${availableSlot}` },
+      });
     } else {
       alert(`No Reservation available for this meal`);
       history.push("/meals");

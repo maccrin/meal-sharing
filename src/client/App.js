@@ -39,11 +39,11 @@ export default function App() {
               <Route exact path="/Review">
                 <MealReview />
               </Route>
-              <Route component={MealSort}>
-                <MealSort />
-              </Route>
               <Route component={ErrorPage}>
                 <ErrorPage />
+              </Route>
+              <Route component={MealSort}>
+                <MealSort />
               </Route>
             </Switch>
             <Footer />
