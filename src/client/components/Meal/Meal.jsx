@@ -32,7 +32,7 @@ const Meal = () => {
     if (availableSlot > 0) {
       alert(`Redirect to Reservation Page`);
       history.push({
-        pathname: `/reservations/${meal.id}/${availableSlot}`,
+        pathname: `/reservations/${meal.id}`,
         state: { data: `${availableSlot}` },
       });
     } else {

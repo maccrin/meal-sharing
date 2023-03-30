@@ -35,11 +35,11 @@ router.get("/", async (request, response) => {
       }
 
     }
-    if ("title" in request.query) {
-      const search = request.query.title;
-      query = query.where("title", "like", `%${search}%`)
+    // if ("title" in request.query) {
+    //   const search = request.query.title;
+    //   query = query.where("title", "like", `%${search}%`)
 
-    }
+    // }
     if ("search" in request.query) {
       const search1 = request.query.search;
       query = query.where("search", "like", `%${search1}`)

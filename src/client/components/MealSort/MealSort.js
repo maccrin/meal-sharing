@@ -1,5 +1,5 @@
 import React from "react";
-import { useSortedMealContext } from '../MealSort/MealSortContext'
+import { useSortedMealContext } from "../Context/MealSortContext";
 import "../MealSort/mealsort.css";
 const MealSort = () => {
     const { fetchMeal } = useSortedMealContext();

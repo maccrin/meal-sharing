@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useMealContext } from "../Context/MealContext";
 import MealSearch from "../MealSearch/MealSearch";
 import MealSort from "../MealSort/MealSort";
-import { useSortedMealContext } from "../MealSort/MealSortContext";
+import { useSortedMealContext } from "../Context/MealSortContext";
 import "../Meal/meal.css";
 const MealList = () => {
   const { currentMeals } = useMealContext();

@@ -8,7 +8,8 @@ import Review from './components/Review/Review'
 import Meal from './components/Meal/Meal'
 import MealList from "./components/MealList/MealList";
 import { MealProvider } from "./components/Context/MealContext";
-import { SortedMealProvider } from "./components/MealSort/MealSortContext"
+import { SortedMealProvider } from "./components/Context/MealSortContext"
+// import { SortedMealProvider } from "./components/MealSort/MealSortContext"
 import Navigation from "./components/Navigation/Navigation"
 import Footer from "./components/Footer/Footer";
 import MealReview from "./components/ReviewPage/ReviewPg"
@@ -30,7 +31,7 @@ export default function App() {
               <Route exact path="/meals/:id">
                 <Meal />
               </Route>
-              <Route exact path="/reservations/:id/:available_slot">
+              <Route exact path="/reservations/:id">
                 <Reservation />
               </Route>
               <Route exact path="/review/:id">

@@ -38,7 +38,6 @@ export const MealProvider = ({ children }) => {
     isLoading: false,
     isError: false,
   });
-
   useEffect(() => {
     (async () => {
       dispatchMeals({ type: "FETCH-INIT" });
@@ -55,7 +54,7 @@ export const MealProvider = ({ children }) => {
     setSearchQuery(e.target.value);
   };
   const getMeal = (mealId) => {
-    if (!currentMeals.data) return undefined;
+    if (!currentMeals.data || isNaN(mealId)) return undefined;
     return currentMeals.data.find((aMeal) => aMeal.id === Number(mealId));
   };
 
