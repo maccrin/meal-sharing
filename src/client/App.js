@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+
 import Home from './components/Home/Home'
 import ErrorPage from './components/ErrorPage'
 import MealSort from "./components/MealSort/MealSort"
@@ -14,8 +15,13 @@ import Navigation from "./components/Navigation/Navigation"
 import Footer from "./components/Footer/Footer";
 import MealReview from "./components/ReviewPage/ReviewPg"
 
+import TestComponent from "./components/TestComponent/TestComponent";
+import Meal from './components/meal/meal'
+
+
 export default function App() {
   return (
+
     < MealProvider >
       <SortedMealProvider>
         <div>
@@ -52,6 +58,14 @@ export default function App() {
         </div >
       </SortedMealProvider>
     </MealProvider>
+
+    <Router>
+      <Route exact path="/">
+        <Meal />
+      </Route>
+
+    </Router>
+
   );
 }
 
