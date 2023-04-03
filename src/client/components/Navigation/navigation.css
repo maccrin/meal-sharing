@@ -1,13 +1,14 @@
 .sticky{
+    position:fixed;
      top:0;
     right: 5rem;
       font-family: 'Times New Roman', Times, serif;
       display: flex;
     align-items:flex-start;
     justify-content: space-evenly;
-    color: #495057;
+   color:rgb(243, 172, 85);
     font-size: medium;
-    position:fixed;
+    /* position:fixed; */
     /* position: -webkit-sticky;
 	position:sticky; */
 	top: 0;
@@ -18,9 +19,13 @@ ul{
     display: flex;
     list-style: none;
 }
+.nav{
+     color:rgb(243, 172, 85);
+}
 li{
-    font-weight: 800;
-    padding: 2px;
+     color:rgb(243, 172, 85);
+    font-weight: 1000;
+    padding: 3px;
     margin: 0 5px 0 5px;
     font-size: 1rem;
     border-radius: 10px;

@@ -1,15 +1,15 @@
 import React from "react";
 import { useHistory } from 'react-router-dom';
 import './home.css'
-// import backgroundImage from '../../assets/images/star-anise.jpg';
 export default function Home() {
     const history = useHistory();
     return (
-        <div className="homecontainer">
+        <div className="homecontainer" >
             <article className="home">
-                <h1 className="heading"> Here To Serve India's Authentic Dishes</h1>
+                <h1 className="heading">Spice a dish with love and it pleases every palate ~ Plautus</h1>
                 <p className="text">
-                    Indian food, not unlike any other country’s national food scene, is a vast constellation of culinary influences and traditions from all over the Asian continent.
+                    Indian food, not unlike any other country’s national food scene, is a vast constellation of culinary influences and traditions from
+                    all over the Asian continent.
                     Traditional Indian food is built from the same flavor foundations.</p>
                 <p className="text">  Besides the standard spice kit of chili peppers (dried whole and powdered), garlic, ginger, and allspice, common ingredients in Indian cooking include:
                     Simple food that packs a flavorful punch is the defining feature of Indian cuisine from region to region.</p>

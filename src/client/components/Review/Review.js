@@ -46,7 +46,7 @@ const Review = () => {
 
     }
     return (
-        <div className="wrapper">
+        <div className="wrapper1">
             {error && alert('Resquest is not sucessful')}
             {meal ? (
                 <form onSubmit={handleSubmit}>

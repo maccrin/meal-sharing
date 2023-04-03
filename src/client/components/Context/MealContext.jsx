@@ -57,7 +57,6 @@ export const MealProvider = ({ children }) => {
     if (!currentMeals.data || isNaN(mealId)) return undefined;
     return currentMeals.data.find((aMeal) => aMeal.id === Number(mealId));
   };
-
   const contextState = {
     currentMeals,
     dispatchMeals,

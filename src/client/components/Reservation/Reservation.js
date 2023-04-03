@@ -53,10 +53,10 @@ const Reservation = () => {
         history.push("/meals")
     }
     return (
-        <div className="wrapper">{error && alert('Resquest is not sucessful')}
+        <div className="wrapper1">{error && alert('Resquest is not sucessful')}
             {meal ? (
                 <form onSubmit={handleSubmit}>
-                    <fieldset>
+                    <fieldset className="reservfielsd">
                         <legend><span>Reservation Form</span></legend>
                         <div className="reserveform">
                             <label htmlFor="number_of_guests">Number Of Guests</label>

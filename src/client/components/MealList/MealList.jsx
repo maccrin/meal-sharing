@@ -26,8 +26,8 @@ const MealList = () => {
         {displayMeal.map((eachMeal) => (
           <li className="list" key={eachMeal.id}>
             <Link to={`/meals/${eachMeal.id}`}>
-              <b>Title: {eachMeal.title}&nbsp;</b>
-              <p>Price:{eachMeal.price}Kr</p>
+              <b>{eachMeal.title}&nbsp;</b>
+              <p>{eachMeal.price}Kr</p>
               <p>When: {eachMeal.when.slice(0, 10)}</p>
               <p>Max_Reservation:{eachMeal.max_reservations}</p>
             </Link>

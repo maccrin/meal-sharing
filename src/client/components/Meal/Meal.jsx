@@ -9,6 +9,9 @@ const Meal = () => {
   const history = useHistory();
   const { getMeal } = useMealContext();
   const meal = getMeal(id);
+  if (!meal) {
+    return <Redirect to="/" />;
+  }
   const abortController = new AbortController();
   useEffect(() => {
     (async () => {
@@ -41,25 +44,23 @@ const Meal = () => {
     }
   };
 
-  if (!meal) {
-    return <Redirect to="/" />;
-  }
-
   return (
     <div className="container">
       {meal ? (
         <>
-          <h2>Here is your Meal Card&nbsp;&nbsp;</h2>
-          <b>{meal.title}</b>
-          <p>Price:{meal.price}</p>
-          <p>Description:{meal.description}</p>
-          <p>Location:{meal.location}</p>
-          {availableSlot > 0 ? (
-            <p>{` Available Slot ${availableSlot}`}</p>
-          ) : (
-            <p>{`No Slots are avilable`}</p>
-          )}
-          <EachMealReview meal={meal} />
+          <fieldset>
+            <legend> Here Is Your Meal Card</legend>
+            <b>{meal.title}</b>
+            <p>Price:{meal.price}</p>
+            <p>Description:{meal.description}</p>
+            <p>Location:{meal.location}</p>
+            {availableSlot > 0 ? (
+              <p>{` Available Slot ${availableSlot}`}</p>
+            ) : (
+              <p>{`No Slots are avilable`}</p>
+            )}
+            <EachMealReview meal={meal} />
+          </fieldset>
           <>
             <div className="mealroute">
               <button className="reserve" onClick={handleReservation}>

@@ -1,7 +1,11 @@
 
 body {
-    font-family: 'Times New Roman', Times, serif;
-   background-color: #c3cdb7;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color:rgb(238, 249, 245);
+}
+legend{
+   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color:rgb(238, 249, 245);
 }
 .wrapper{
     padding: 5rem;
@@ -11,6 +15,8 @@ body {
     font-style: italic;
 }
 .reviewform{
+   padding-top: 1rem;
+    padding-left: 6.5rem;
   display: grid;
   grid-template-columns: 1fr;
   height: 200px;
@@ -26,20 +32,16 @@ button {
 .on {
   height: 30px;
   width:30px;
-  color: #106037;
+  color: #eea60b;
 }
 .off {
   height: 30px;
   width:30px;
-  color: #827979;
+  color: #eceaea;
 }
 .reviewbutton{
-   color:#211f20;
-    background-color:#9bbdac;
-      background-image:linear-gradient(to left, #95c297, #86a08e);
-   /* color:#211f20;
-    background-color:#9bbdac;
-    font-weight: bolder;
-   font-style: unset ; */
+    margin-top: 1.5rem;
+   color:#1f191c;
+    background-image:linear-gradient(to left,  #3b3e3c,#e3ebe3,);
    border-radius:10px;
 }
