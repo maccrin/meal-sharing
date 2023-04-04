@@ -20,8 +20,9 @@
 }
 .eachreview{
     width:200px;
-      color:#1f191c;
-    background-image:linear-gradient(to left,  #3b3e3c,#e3ebe3,);
+    color:#1f191c;
+    background-image: url('../../assets/images/star-anise1.jpg');
+    background-repeat: repeat-x;
     margin: 2rem;
     padding: .5rem;
 box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
@@ -30,10 +31,10 @@ box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 
 .on {
   height: 30px;
   width:30px;
-  color: #eea60b;
+  color: green;
 }
 .off {
   height: 30px;
   width:30px;
-  color: #f1eaea;
+   color: black;
 }

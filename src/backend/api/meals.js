@@ -29,22 +29,15 @@ router.get("/", async (request, response) => {
     }
     if ("title" in request.query) {
       const title = request.query.title;
- react-frontend
-      if (title) query = query.where("title", "like", `%${title}%`)
-      else {
-        query = knex('meal')
-      }
+      query = query.where("title", "like", `%${title}%`)
+      // else {
+      //   query = knex('meal')
+      // }
 
     }
-    // if ("title" in request.query) {
-    //   const search = request.query.title;
-    //   query = query.where("title", "like", `%${search}%`)
-
-    // }
     if ("search" in request.query) {
       const search1 = request.query.search;
       query = query.where("search", "like", `%${search1}`)
-      query = query.where("title", "like", `%${title}%`)
 
 
     }
@@ -70,14 +63,15 @@ router.get("/", async (request, response) => {
       if (dateBefore && dateBefore != 'Invalid Date') {
         console.log("hi from if")
 
-      if (dateBefore && dateBefore != 'Invalid Date') {
-        console.log(dateBefore)
+        if (dateBefore && dateBefore != 'Invalid Date') {
+          console.log(dateBefore)
 
-        query = query.where("when", "<", dateBefore)
+          query = query.where("when", "<", dateBefore)
 
-      }
-      else {
-        return response.status(404).send(`please provide valid dateBefore Field in the query`)
+        }
+        else {
+          return response.status(404).send(`please provide valid dateBefore Field in the query`)
+        }
       }
     }
     if ("limit" in request.query) {
@@ -107,11 +101,6 @@ router.get("/", async (request, response) => {
       }
     }
     if (request.query.availableReservations === 'true') {
-
-      // query = query.select("meal.title", "meal.id",
-      //   knex.raw("(meal.max_reservations -  sum(reservation.number_of_guests)) as available_slot"))
-      //   .join("reservation", "meal.id", "=", "reservation.meal_id")
-      //   .groupBy("reservation.meal_id").having("available_slot", ">", "0")
       query = query
         .select("meal.title", "meal.price", "meal.id",
           knex.raw(
@@ -137,14 +126,11 @@ router.get("/", async (request, response) => {
         knex.raw("count(review.stars) as total_review"), knex.raw("avg(review.stars) as avg_review"))
         .join("review", "meal.id", "=", "review.meal_id")
         .groupBy("review.meal_id")
-
-      query = query.select((knex.raw(` meal.id,meal.title,meal.max_reservations , sum(reservation.number_of_guests)as 'totalReservations'`))).join('reservation', 'reservation.meal_id', '=', 'meal.id').groupBy('meal.id').having('meal.max_reservations', '>', 'totalReservations');
-
-
     }
     const data = await query;
     data.length ? response.status(200).json(data) : response.send(`No meal Found`);
   }
+
   catch (e) {
     response.status(500).send(e.message)
   }
@@ -167,25 +153,30 @@ router.get("/:id", async (request, response) => {
 router.get("/:meal_id/reservations", async (req, res) => {
   const mealId = parseInt(req.params.meal_id);
   let query = knex('meal');
-  query = query
-    .select("meal.title", "meal.price", "meal.id",
-      knex.raw(
-        "meal.max_reservations-ifnull( sum(reservation.number_of_guests),0 )as 'available_slot'"
+  if (!isNaN(mealId)) {
+    query = query
+      .select("meal.title", "meal.price", "meal.id",
+        knex.raw(
+          "meal.max_reservations-ifnull( sum(reservation.number_of_guests),0 )as 'available_slot'"
+        )
       )
-    )
-    .leftJoin("reservation", { "meal.id": "reservation.meal_id" }).where("meal.id", mealId).groupBy(
-      "meal.id",
-      "meal.title",
-      "meal.description",
-      "meal.location",
-      "meal.when",
-      "meal.max_reservations",
-      "meal.price",
-      "meal.created_date"
-    )
-    .having("meal.max_reservations", ">", "totalReservations");
-  const data = await query;
-  data.length ? res.status(200).json(data) : res.send(`No meal Found`);
+      .leftJoin("reservation", { "meal.id": "reservation.meal_id" }).where("meal.id", mealId).groupBy(
+        "meal.id",
+        "meal.title",
+        "meal.description",
+        "meal.location",
+        "meal.when",
+        "meal.max_reservations",
+        "meal.price",
+        "meal.created_date"
+      )
+      .having("meal.max_reservations", ">", "totalReservations");
+    const data = await query;
+    data.length ? res.status(200).json(data) : res.send(`No meal Found`);
+  }
+  else {
+    res.send(`Invalid Meal Id`)
+  }
 })
 
 router.get("/:meal_id/reviews", async (req, res) => {

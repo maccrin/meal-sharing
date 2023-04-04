@@ -46,9 +46,9 @@ legend{
     color:rgb(2, 65, 42);  
 }
 fieldset{
-     color:rgb(48, 243, 9);
-     text-shadow:  1px 2px rgb(38, 8, 13);
-      background-image: url('../../assets/images/spice.jpg');
+     color:orange;
+     text-shadow:  1px 2px rgb(20, 3, 6);
+      background-image: url('../../assets/images/veggie-fall.jpg');
     height:300px;
     font-weight: 800;
     border: 1px solid rgb(64, 62, 62);
@@ -59,7 +59,6 @@ fieldset{
 {  
       width:200px;
       color:#1f191c;
-    background-image:linear-gradient(to left,  #3b3e3c,#e3ebe3,);
     background-image: url('../../assets/images/star-anise1.jpg');
     background-repeat: repeat-x;
     margin: 2rem;
@@ -67,9 +66,7 @@ fieldset{
 box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
  rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 } 
-fieldset:hover {
-  transform: rotate(360deg);
-}
+
 
 .mealroute{
     padding-top: 2rem;

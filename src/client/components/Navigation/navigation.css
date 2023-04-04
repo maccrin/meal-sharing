@@ -1,6 +1,6 @@
 .sticky{
     position:fixed;
-     top:0;
+     padding-top:.5rem;
     right: 5rem;
       font-family: 'Times New Roman', Times, serif;
       display: flex;

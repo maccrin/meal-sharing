@@ -13,14 +13,8 @@ import { SortedMealProvider } from "./components/Context/MealSortContext"
 import Navigation from "./components/Navigation/Navigation"
 import Footer from "./components/Footer/Footer";
 import MealReview from "./components/ReviewPage/ReviewPg"
-
-import TestComponent from "./components/TestComponent/TestComponent";
-import Meal from './components/meal/meal'
-
-
 export default function App() {
   return (
-
     < MealProvider >
       <SortedMealProvider>
         <div>
@@ -36,6 +30,7 @@ export default function App() {
               <Route exact path="/meals/:id">
                 <Meal />
               </Route>
+              {/* <Route exact path="/reservations/:id/:available_slot"> */}
               <Route exact path="/reservations/:id">
                 <Reservation />
               </Route>
@@ -45,10 +40,10 @@ export default function App() {
               <Route exact path="/Review">
                 <MealReview />
               </Route>
-              <Route >
+              <Route component={ErrorPage}>
                 <ErrorPage />
               </Route>
-              <Route >
+              <Route component={MealSort}>
                 <MealSort />
               </Route>
             </Switch>
@@ -57,17 +52,8 @@ export default function App() {
         </div >
       </SortedMealProvider>
     </MealProvider>
-
-    <Router>
-      <Route exact path="/">
-        <Meal />
-      </Route>
-
-    </Router>
-
   );
 }
-
 
 
 
