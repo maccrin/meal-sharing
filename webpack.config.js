@@ -32,6 +32,14 @@ module.exports = {
           options: { limit: 100000 }
         },
       },
+      {
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        use: [
+          {
+            loader: 'file-loader',
+          },
+        ],
+      },
     ],
   },
   resolve: {
