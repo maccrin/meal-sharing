@@ -63,7 +63,7 @@ const Reservation = () => {
                             <input type="number" min={1} max={availableSlot} required
                                 id="number_of_guests" value={form.number_of_guests} onChange={handleChangeMaxSlot}></input>
                             <label htmlFor="contact_phone_number">Contact Phone Number</label>
-                            <input type="tel" required pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="123-4567-8901"
+                            <input type="tel" required pattern="[0-9]{3}-[0-9]{4}-[0-9]{3}" placeholder="123-4567-890"
                                 id="contact_phone_number" value={form.contact_phone_number} onChange={handleChange}></input>
                             <label htmlFor="contact_name">Contact Person</label>
                             <input type="text" required

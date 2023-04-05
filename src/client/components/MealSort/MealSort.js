@@ -2,44 +2,50 @@ import React from "react";
 import { useSortedMealContext } from "../Context/MealSortContext";
 import "../MealSort/mealsort.css";
 const MealSort = () => {
-    const { fetchMeal } = useSortedMealContext();
+    const { handleClick } = useSortedMealContext();
     return (
         <>
             <div className="sort">
                 <div className="pricesort">
-                    <button name="PriceAesc"
+                    <button name="price"
+                        id="asc"
                         className="sortbutton"
-                        onClick={() => fetchMeal(`api/meals?sortKey=price&sortDir=asc`)}>
+                        onClick={handleClick}>
                         Price&#x2191;
                     </button>
-                    <button name="PriceDsc"
+                    <button name="price"
+                        id="desc"
                         className="sortbutton"
-                        onClick={() => fetchMeal(`api/meals?sortKey=price&sortDir=desc`)}>
+                        onClick={handleClick}>
                         Price&#x2193;
                     </button>
                 </div>
                 <div className="timesort">
-                    <button name="WhenAesc"
+                    <button name="when"
+                        id="asc"
                         className="sortbutton"
-                        onClick={() => fetchMeal(`api/meals?sortKey=when`)}
+                        onClick={handleClick}
                     >
                         When&#x2191;
                     </button>
-                    <button name="WhenDsc"
+                    <button name="when"
+                        id="desc"
                         className="sortbutton"
-                        onClick={() => fetchMeal(`api/meals?sortKey=when&sortDir=desc`)}>
+                        onClick={handleClick}>
                         When&#x2193;
                     </button>
                 </div>
                 <div className="reservationsort">
-                    <button name="Max_Reservation_Aesc"
+                    <button name="max_reservations"
+                        id="asc"
                         className="sortbutton"
-                        onClick={() => fetchMeal(`api/meals?sortKey=max_reservations`)}>
+                        onClick={handleClick}>
                         Max_Reserve&#x2191;
                     </button>
-                    <button name="Max_Reservation_Dsc"
+                    <button name="max_reservations"
+                        id="desc"
                         className="sortbutton"
-                        onClick={() => fetchMeal(`api/meals?sortKey=max_reservations&sortDir=desc`)}
+                        onClick={handleClick}
                     > Max_Reserve&#x2193;
                     </button>
                 </div>

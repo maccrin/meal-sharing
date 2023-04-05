@@ -2,6 +2,8 @@ import React, {
     useReducer,
     createContext,
     useContext,
+    useState,
+    useEffect
 } from "react";
 
 export const MealSortContext = createContext();
@@ -25,6 +27,8 @@ const sortedMealReducer = (state, action) => {
     }
 };
 export const SortedMealProvider = ({ children }) => {
+    const [sortKey, setSortKey] = useState("");
+    const [sortDir, setSortDir] = useState("");
     let result;
     const [sortedtCurrentMeals, dispatchMeal] = useReducer(sortedMealReducer, {
         data: [],
@@ -33,20 +37,27 @@ export const SortedMealProvider = ({ children }) => {
     });
 
 
-    const fetchMeal = async (fetchUrl) => {
-        try {
-            const res = await fetch(fetchUrl);
-            if (res.ok) {
-                const result = await res.json();
-                dispatchMeal({ type: "Load", payload: result })
-
+    useEffect(() => {
+        (async () => {
+            try {
+                const res = await fetch(`api/meals?sortKey=${sortKey}&sortDir=${sortDir}`);
+                if (res.ok) {
+                    const result = await res.json();
+                    dispatchMeal({ type: "Load", payload: result })
+                }
+            } catch {
+                () => dispatchMeal({ type: "Failures" })
             }
-        } catch {
-            () => dispatchMeal({ type: "Failures" })
-        }
-    }
+        })();
+    }, [sortKey, sortDir])
+
+    const handleClick = (e) => {
+        console.log(e.target.name, e.target.id)
+        setSortKey(e.target.name);
+        setSortDir(e.target.id);
+    };
     return (
-        <MealSortContext.Provider value={{ fetchMeal, sortedtCurrentMeals, dispatchMeal }}> {children}</MealSortContext.Provider >
+        <MealSortContext.Provider value={{ sortedtCurrentMeals, dispatchMeal, handleClick }}> {children}</MealSortContext.Provider >
     );
 };
 export function useSortedMealContext() {

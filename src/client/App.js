@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import Home from './components/Home/Home'
-import ErrorPage from './components/ErrorPage'
+import ErrorPage from './components/Error/ErrorPage'
 import MealSort from "./components/MealSort/MealSort"
 import Reservation from './components/Reservation/Reservation'
 import Review from './components/Review/Review'

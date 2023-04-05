@@ -38,16 +38,11 @@ router.get("/", async (request, response) => {
     if ("search" in request.query) {
       const search1 = request.query.search;
       query = query.where("search", "like", `%${search1}`)
-
-
     }
 
     if ("dateAfter" in request.query) {
       const dateAfter = new Date(request.query.dateAfter);
       if (dateAfter != 'Invalid Date') {
-
-        console.log('hi from dateafter')
-
         query = query.where("when", ">", dateAfter)
       }
       else {
@@ -93,11 +88,10 @@ router.get("/", async (request, response) => {
         }
         else {
           query = query.orderBy(orderBy)
-
         }
       }
       else {
-        response.send(`Invalid sort key`)
+        return response.send(`Invalid sort key`)
       }
     }
     if (request.query.availableReservations === 'true') {
