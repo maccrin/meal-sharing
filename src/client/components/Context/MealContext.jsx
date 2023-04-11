@@ -31,6 +31,25 @@ const mealReducer = (state, action) => {
       throw new Error();
   }
 };
+const sortedMealReducer = (state, action) => {
+  switch (action.type) {
+    case "Load":
+      return {
+        ...state,
+        data: action.payload,
+        isLoading: false,
+        isError: false,
+      };
+    case "Failures":
+      return {
+        ...state,
+        isLoading: false,
+        isError: true,
+      };
+    default:
+      throw new Error();
+  }
+};
 export const MealProvider = ({ children }) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [currentMeals, dispatchMeals] = useReducer(mealReducer, {
@@ -38,6 +57,17 @@ export const MealProvider = ({ children }) => {
     isLoading: false,
     isError: false,
   });
+  const [sortKey, setSortKey] = useState("");
+  const [sortDir, setSortDir] = useState("");
+  let result;
+  const [sortedtCurrentMeals, dispatchSortedMeal] = useReducer(
+    sortedMealReducer,
+    {
+      data: [],
+      isLoading: false,
+      isError: false,
+    }
+  );
   useEffect(() => {
     (async () => {
       dispatchMeals({ type: "FETCH-INIT" });
@@ -57,12 +87,36 @@ export const MealProvider = ({ children }) => {
     if (!currentMeals.data || isNaN(mealId)) return undefined;
     return currentMeals.data.find((aMeal) => aMeal.id === Number(mealId));
   };
+  useEffect(() => {
+    (async () => {
+      try {
+        const res = await fetch(
+          `api/meals?sortKey=${sortKey}&sortDir=${sortDir}`
+        );
+        if (res.ok) {
+          const result = await res.json();
+          dispatchSortedMeal({ type: "Load", payload: result });
+        }
+      } catch {
+        () => dispatchSortedMeal({ type: "Failures" });
+      }
+    })();
+  }, [sortKey, sortDir]);
+
+  const handleClick = (e) => {
+    setSortKey(e.target.name);
+    setSortDir(e.target.id);
+  };
+
   const contextState = {
     currentMeals,
     dispatchMeals,
     getMeal,
     searchQuery,
     handleChange,
+    sortedtCurrentMeals,
+    dispatchSortedMeal,
+    handleClick,
   };
   return (
     <MealContext.Provider value={contextState}>{children}</MealContext.Provider>

@@ -3,11 +3,9 @@ import { Link } from "react-router-dom";
 import { useMealContext } from "../Context/MealContext";
 import MealSearch from "../MealSearch/MealSearch";
 import MealSort from "../MealSort/MealSort";
-import { useSortedMealContext } from "../Context/MealSortContext";
 import "../Meal/meal.css";
 const MealList = () => {
-  const { currentMeals } = useMealContext();
-  const { sortedtCurrentMeals } = useSortedMealContext();
+  const { currentMeals, sortedtCurrentMeals } = useMealContext();
   if (!currentMeals.data) {
     return <h1>...Loading</h1>;
   }

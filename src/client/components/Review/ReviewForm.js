@@ -23,7 +23,6 @@ const Review = () => {
         e.preventDefault();
         form.meal_id = meal.id;
         form.created_date = new Date().toJSON().slice(0, 10);
-        console.log(form.created_date);
         form.stars = rating;
         try {
             const response = await fetch(`api/reviews`, {

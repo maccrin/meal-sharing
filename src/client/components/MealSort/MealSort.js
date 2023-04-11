@@ -1,8 +1,9 @@
 import React from "react";
-import { useSortedMealContext } from "../Context/MealSortContext";
+// import { useSortedMealContext } from "../Context/MealSortContext";
+import { useMealContext } from "../Context/MealContext";
 import "../MealSort/mealsort.css";
 const MealSort = () => {
-    const { handleClick } = useSortedMealContext();
+    const { handleClick } = useMealContext();
     return (
         <>
             <div className="sort">

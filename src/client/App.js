@@ -9,48 +9,45 @@ import Review from './components/Review/ReviewForm'
 import Meal from './components/Meal/Meal'
 import MealList from "./components/MealList/MealList";
 import { MealProvider } from "./components/Context/MealContext";
-import { SortedMealProvider } from "./components/Context/MealSortContext"
 import Navigation from "./components/Navigation/Navigation"
 import Footer from "./components/Footer/Footer";
 import MealReview from "./components/ReviewPage/ReviewPg"
 export default function App() {
   return (
     < MealProvider >
-      <SortedMealProvider>
-        <div>
-          <Router>
-            <Navigation />
-            <Switch>
-              <Route exact path="/">
-                <Home />
-              </Route>
-              <Route exact path="/meals">
-                <MealList />
-              </Route>
-              <Route exact path="/meals/:id">
-                <Meal />
-              </Route>
-              {/* <Route exact path="/reservations/:id/:available_slot"> */}
-              <Route exact path="/reservations/:id">
-                <Reservation />
-              </Route>
-              <Route exact path="/review/:id">
-                <Review />
-              </Route>
-              <Route exact path="/Review">
-                <MealReview />
-              </Route>
-              <Route component={ErrorPage}>
-                <ErrorPage />
-              </Route>
-              <Route component={MealSort}>
-                <MealSort />
-              </Route>
-            </Switch>
-            <Footer />
-          </Router>
-        </div >
-      </SortedMealProvider>
+      <div>
+        <Router>
+          <Navigation />
+          <Switch>
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route exact path="/meals">
+              <MealList />
+            </Route>
+            <Route exact path="/meals/:id">
+              <Meal />
+            </Route>
+            {/* <Route exact path="/reservations/:id/:available_slot"> */}
+            <Route exact path="/reservations/:id">
+              <Reservation />
+            </Route>
+            <Route exact path="/review/:id">
+              <Review />
+            </Route>
+            <Route exact path="/Review">
+              <MealReview />
+            </Route>
+            <Route component={ErrorPage}>
+              <ErrorPage />
+            </Route>
+            <Route component={MealSort}>
+              <MealSort />
+            </Route>
+          </Switch>
+          <Footer />
+        </Router>
+      </div >
     </MealProvider>
   );
 }
