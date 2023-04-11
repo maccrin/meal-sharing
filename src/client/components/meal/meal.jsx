@@ -43,7 +43,6 @@ const Meal = () => {
       history.push("/meals");
     }
   };
-
   return (
     <div className="container">
       {meal ? (
