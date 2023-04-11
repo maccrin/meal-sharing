@@ -4,8 +4,8 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from './components/Home/Home'
 import ErrorPage from './components/Error/ErrorPage'
 import MealSort from "./components/MealSort/MealSort"
-import Reservation from './components/Reservation/Reservation'
-import Review from './components/Review/Review'
+import Reservation from './components/Reservation/ReservationForm'
+import Review from './components/Review/ReviewForm'
 import Meal from './components/Meal/Meal'
 import MealList from "./components/MealList/MealList";
 import { MealProvider } from "./components/Context/MealContext";
