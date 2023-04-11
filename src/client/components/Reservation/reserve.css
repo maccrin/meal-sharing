@@ -28,6 +28,17 @@ span{
     padding-left: 6.5rem;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     color:rgb(225, 188, 131);
+    background-color: #c3cdb7;
+}
+.wrapper{
+    padding: 1rem;
+    margin-top:2rem;
+    text-align: center;
+    color: rgb(5, 28, 21);
+    font-style: italic;
+   
+}
+.reserveform{
       display: grid;
   grid-template-columns: 1fr;
   height: 200px;
@@ -37,4 +48,7 @@ span{
     margin-top: 1.5rem;
  color:#1f191c;
     background-image:linear-gradient(to left,  #3b3e3c,#e3ebe3,);
+     color:#211f20;
+    background-color:#9bbdac;
+     background-image:linear-gradient(to left, #95c297, #86a08e);
 }

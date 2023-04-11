@@ -7,6 +7,10 @@
 
 .searchmeal{
             background-image:linear-gradient(to left,  #3b3e3c,#e3ebe3,);
+}
+
+.searchmeal{
+         background-image:linear-gradient(to left, #95c297, #86a08e);
   color:#211f20;
     background-color:#9bbdac;
     border-radius: 5px;
