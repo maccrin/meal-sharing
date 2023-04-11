@@ -11,10 +11,10 @@ const MealList = () => {
   if (!currentMeals.data) {
     return <h1>...Loading</h1>;
   }
-  let displayMeal;
+  let displayMeals;
   sortedtCurrentMeals.data.length > 0
-    ? (displayMeal = Array.from(sortedtCurrentMeals.data))
-    : (displayMeal = Array.from(currentMeals.data));
+    ? (displayMeals = Array.from(sortedtCurrentMeals.data))
+    : (displayMeals = Array.from(currentMeals.data));
   return (
     <div className="container">
       {currentMeals.isError && <p> Something went wrong</p>}
@@ -23,7 +23,7 @@ const MealList = () => {
       <MealSearch />
       <MealSort />
       <ul className="meal">
-        {displayMeal.map((eachMeal) => (
+        {displayMeals.map((eachMeal) => (
           <li className="list" key={eachMeal.id}>
             <Link to={`/meals/${eachMeal.id}`}>
               <b>{eachMeal.title}&nbsp;</b>
