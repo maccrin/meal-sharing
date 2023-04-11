@@ -1,0 +1,17 @@
+.sort{
+    padding-top: 2rem;
+    display:flex;
+    justify-content: space-between;
+     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+     font-style: italic;
+     color: black;
+}
+.sortbutton{
+     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+     font-style: italic;
+     color: black;
+}
+.arrow{
+    background-color:#9bbdac;
+    color:black;
+}

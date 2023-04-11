@@ -1,0 +1,23 @@
+body {
+    font-family: 'Times New Roman', Times, serif;
+    background-color: #c3cdb7;
+}
+.wrapper{
+    padding: 1rem;
+    margin-top:2rem;
+    text-align: center;
+    color: rgb(5, 28, 21);
+    font-style: italic;
+   
+}
+.reserveform{
+      display: grid;
+  grid-template-columns: 1fr;
+  height: 200px;
+  width:400px;
+}
+.booked{
+     color:#211f20;
+    background-color:#9bbdac;
+     background-image:linear-gradient(to left, #95c297, #86a08e);
+}

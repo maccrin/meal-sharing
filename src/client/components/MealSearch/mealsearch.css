@@ -1,0 +1,11 @@
+.search{
+     font-style: italic;
+      font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.searchmeal{
+         background-image:linear-gradient(to left, #95c297, #86a08e);
+  color:#211f20;
+    background-color:#9bbdac;
+    border-radius: 5px;
+}
