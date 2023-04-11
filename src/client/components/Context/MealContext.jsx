@@ -7,7 +7,6 @@ import React, {
 } from "react";
 export const MealContext = createContext();
 const mealReducer = (state, action) => {
-  console.log(action.payload);
   switch (action.type) {
     case "FETCH-INIT":
       return {
@@ -16,6 +15,27 @@ const mealReducer = (state, action) => {
         isError: false,
       };
     case "SUCCESS":
+
+      return {
+        ...state,
+        data: action.payload,
+        isLoading: false,
+        isError: false,
+      };
+    case "Failures":
+      return {
+        ...state,
+        isLoading: false,
+        isError: true,
+      };
+    default:
+      throw new Error();
+  }
+};
+const sortedMealReducer = (state, action) => {
+  switch (action.type) {
+    case "Load":
+
       return {
         ...state,
         data: action.payload,
@@ -39,7 +59,17 @@ export const MealProvider = ({ children }) => {
     isLoading: false,
     isError: false,
   });
-
+  const [sortKey, setSortKey] = useState("");
+  const [sortDir, setSortDir] = useState("");
+  let result;
+  const [sortedtCurrentMeals, dispatchSortedMeal] = useReducer(
+    sortedMealReducer,
+    {
+      data: [],
+      isLoading: false,
+      isError: false,
+    }
+  );
   useEffect(() => {
     (async () => {
       dispatchMeals({ type: "FETCH-INIT" });
@@ -56,9 +86,35 @@ export const MealProvider = ({ children }) => {
     setSearchQuery(e.target.value);
   };
   const getMeal = (mealId) => {
+
+    if (!currentMeals.data || isNaN(mealId)) return undefined;
+    return currentMeals.data.find((aMeal) => aMeal.id === Number(mealId));
+  };
+  useEffect(() => {
+    (async () => {
+      try {
+        const res = await fetch(
+          `api/meals?sortKey=${sortKey}&sortDir=${sortDir}`
+        );
+        if (res.ok) {
+          const result = await res.json();
+          dispatchSortedMeal({ type: "Load", payload: result });
+        }
+      } catch {
+        () => dispatchSortedMeal({ type: "Failures" });
+      }
+    })();
+  }, [sortKey, sortDir]);
+
+  const handleClick = (e) => {
+    setSortKey(e.target.name);
+    setSortDir(e.target.id);
+  };
+
     if (!currentMeals.data) return undefined;
     return currentMeals.data.find((aMeal) => aMeal.id === Number(mealId));
   };
+
 
   const contextState = {
     currentMeals,
@@ -66,6 +122,9 @@ export const MealProvider = ({ children }) => {
     getMeal,
     searchQuery,
     handleChange,
+    sortedtCurrentMeals,
+    dispatchSortedMeal,
+    handleClick,
   };
   return (
     <MealContext.Provider value={contextState}>{children}</MealContext.Provider>

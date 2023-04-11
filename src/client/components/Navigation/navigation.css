@@ -1,15 +1,17 @@
 .sticky{
+    position:fixed;
+     padding-top:.5rem;
      top:0;
     right: 5rem;
       font-family: 'Times New Roman', Times, serif;
       display: flex;
     align-items:flex-start;
     justify-content: space-evenly;
+   color:rgb(243, 172, 85);
+    font-size: medium;
     color: #495057;
     font-size: medium;
     position:fixed;
-    /* position: -webkit-sticky;
-	position:sticky; */
 	top: 0;
 }
 
@@ -18,6 +20,14 @@ ul{
     display: flex;
     list-style: none;
 }
+
+.nav{
+     color:rgb(243, 172, 85);
+}
+li{
+     color:rgb(243, 172, 85);
+    font-weight: 1000;
+    padding: 3px;
 li{
     font-weight: 800;
     padding: 2px;

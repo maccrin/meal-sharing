@@ -1,3 +1,5 @@
+
+import React from "react";
 import React, { useContext, useEffect, useState } from "react";
 import { useMealContext } from "../Context/MealContext";
 import "../MealSearch/mealsearch.css";

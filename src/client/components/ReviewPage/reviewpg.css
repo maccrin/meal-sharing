@@ -9,7 +9,6 @@
   font-stretch: expanded;
 }
 .reviewlist{
-
      position:absolute;
     top:0;
     left: 0;
@@ -21,6 +20,9 @@
 }
 .eachreview{
     width:200px;
+    color:#1f191c;
+    background-image: url('../../assets/images/star-anise1.jpg');
+    background-repeat: repeat-x;
       background-image:linear-gradient(to left, #95c297, #86a08e);
     margin: 2rem;
     padding: .5rem;
@@ -30,10 +32,12 @@ box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 
 .on {
   height: 30px;
   width:30px;
+  color: green;
   color: #106037;
 }
 .off {
   height: 30px;
   width:30px;
+   color: black;
   color: #827979;
 }

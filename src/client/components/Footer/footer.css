@@ -1,7 +1,9 @@
 .footer{
     font-family: 'Times New Roman', Times, serif;
      position: fixed;
+  background-color: #3b3e3c;
   background-color: rgb(116, 148, 84);
+
   bottom: 0;
   left: 0;
   right: 0;
