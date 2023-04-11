@@ -71,7 +71,7 @@ const Meal = () => {
                   history.push(`/review/${meal.id}`);
                 }}
               >
-                Leave a Review
+                Leave The Review
               </button>
             </div>
           </>
