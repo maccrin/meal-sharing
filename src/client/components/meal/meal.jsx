@@ -82,5 +82,4 @@ const Meal = () => {
     </div>
   );
 };
-
 export default Meal;
