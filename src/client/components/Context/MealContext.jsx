@@ -15,6 +15,7 @@ const mealReducer = (state, action) => {
         isError: false,
       };
     case "SUCCESS":
+
       return {
         ...state,
         data: action.payload,
@@ -34,6 +35,7 @@ const mealReducer = (state, action) => {
 const sortedMealReducer = (state, action) => {
   switch (action.type) {
     case "Load":
+
       return {
         ...state,
         data: action.payload,
@@ -84,6 +86,7 @@ export const MealProvider = ({ children }) => {
     setSearchQuery(e.target.value);
   };
   const getMeal = (mealId) => {
+
     if (!currentMeals.data || isNaN(mealId)) return undefined;
     return currentMeals.data.find((aMeal) => aMeal.id === Number(mealId));
   };
@@ -107,6 +110,11 @@ export const MealProvider = ({ children }) => {
     setSortKey(e.target.name);
     setSortDir(e.target.id);
   };
+
+    if (!currentMeals.data) return undefined;
+    return currentMeals.data.find((aMeal) => aMeal.id === Number(mealId));
+  };
+
 
   const contextState = {
     currentMeals,
