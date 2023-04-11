@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useHistory, Redirect } from "react-router-dom";
 import { useMealContext } from "../Context/MealContext";
-import EachMealReviewDisplay from "../MealReview/MealReviewDisplay";
+import EachMealReview from "../MealReview/MealReview";
 import "./meal.css";
 const Meal = () => {
   const [availableSlot, setAvailableSlot] = useState([]);
@@ -58,7 +58,7 @@ const Meal = () => {
             ) : (
               <p>{`No Slots are avilable`}</p>
             )}
-            <EachMealReviewDisplay meal={meal} />
+            <EachMealReview meal={meal} />
           </fieldset>
           <>
             <div className="mealroute">
@@ -82,4 +82,5 @@ const Meal = () => {
     </div>
   );
 };
+
 export default Meal;
