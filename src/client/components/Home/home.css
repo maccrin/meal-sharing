@@ -65,22 +65,13 @@ body {
     width: fit-content;
 
 }
-.homebutton{
- margin-top: 2rem;
- margin-left:30rem;
- color:#1f191c;
-    background-image:linear-gradient(to left,  #3b3e3c,#e3ebe3,);
- width:200px;
-  font-weight: bolder;
-   font-style: italic ;
-   border-radius:10px;
-}
+
 .homebutton{
     margin-bottom: 5rem;
     margin-left: 15rem;
  color:#211f20;
     background-color:#9bbdac;
-     background-image:linear-gradient(to left, #95c297, #86a08e);
+    background-image:linear-gradient(to left,  #3b3e3c,#e3ebe3,);
  width:200px;
   font-weight: bolder;
    font-style: italic ;

@@ -7,7 +7,7 @@ legend{
    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     color:rgb(238, 249, 245);
     font-family: 'Times New Roman', Times, serif;
-   background-color: #c3cdb7;
+   
 }
 .wrapper{
     padding: 5rem;
@@ -47,12 +47,4 @@ button {
    color:#1f191c;
     background-image:linear-gradient(to left,  #3b3e3c,#e3ebe3,);
   color: #827979;
-}
-.reviewbutton{
-   color:#211f20;
-    background-color:#9bbdac;
-      background-image:linear-gradient(to left, #95c297, #86a08e);
-    background-color:#9bbdac;
-    font-weight: bolder;
-   border-radius:10px;
 }

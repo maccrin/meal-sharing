@@ -18,12 +18,7 @@ router.get("/:id", async (request, response) => {
         const reviewId = parseInt(request.params.id);
         const review = await knex("review")
 
-            .select("title", "description", "meal_id", "stars", "created_date").where({ meal_id: reviewId });
-
-            .select("title", "description", "meal_id", "stars", "created_date")
-
-            .where({ meal_id: reviewId });
-        console.log(review.length)
+            .select("title", "description", "meal_id", "stars", "created_date").where({ meal_id: reviewId })
         review.length ? response.status(200).json({ "expectedReview": review }) : response.status(200).send(`review with this meal id ${reviewId} not found`)
 
             .where({ id: reviewId });
@@ -63,11 +58,7 @@ router.post("/", async (request, response) => {
         })
         response.status(201).json({ NewReview: new_review })
 
-            stars: request.body.stars
-
-        })
-        response.status(201).json({ NewReview: new_review })
-
+        stars: request.body.stars
 
     }
     catch (error) {
