@@ -1,20 +1,21 @@
-.sort{
-    padding-top: .5rem;
-    display:flex;
-    justify-content: space-between;
-     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-     font-style: italic;
-     color: black;
+.sort {
+  padding-top: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-style: italic;
+  color: black;
 }
-.sortbutton{
-     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-     font-style: italic;
-        color:rgb(238, 249, 245);
-  text-shadow:1px 1px 2px rgb(239, 86, 112);
-}
-   
-.arrow{
-    background-color:#9bbdac;
-    color:black;
+.sortbutton {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-style: italic;
+  color: rgb(238, 249, 245);
+  text-shadow: 1px 1px 2px rgb(239, 86, 112);
 }
 
+.arrow {
+  background-color: #9bbdac;
+  color: black;
+}

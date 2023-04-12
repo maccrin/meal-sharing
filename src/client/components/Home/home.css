@@ -1,80 +1,78 @@
-
 body {
-
-  position:relative;
+  position: relative;
   height: 100%;
-  width:100%;
-    font-family: 'Times New Roman', Times, serif;
-    background-image: url('../../assets/images/back.jpg');
-    background-repeat: repeat-x  repeat-y;
-   
+  width: 100%;
+  font-family: "Times New Roman", Times, serif;
+  background-image: url("../../assets/images/back.jpg");
+  background-repeat: repeat-x repeat-y;
 }
-.homecontainer{
-  position:fixed;
-    padding-top: 2rem;
-    width: 90%;
-    top:0;
-    left: 0;
-    margin-top: 1.5rem;
-       margin-bottom: 1rem;
-    margin-left: 1.5rem;}
+.homecontainer {
+  position: fixed;
+  padding-top: 2rem;
+  width: 90%;
+  top: 0;
+  left: 0;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+  margin-left: 1.5rem;
+}
 
-.heading{
-    left: 0;
-   text-shadow:1px 1px 2px rgb(234, 156, 169);
+.heading {
+  left: 0;
+  text-shadow: 1px 1px 2px rgb(234, 156, 169);
   padding-top: 1rem;
   padding-left: 5rem;
-    font-style: italic;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    color:rgb(238, 249, 245);
-   
+  font-style: italic;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  color: rgb(238, 249, 245);
 }
-.text{
-  color:rgb(11, 13, 12);
-    padding-top:2rem;
-    font-style: italic;
+.text {
+  color: rgb(11, 13, 12);
+  padding-top: 2rem;
+  font-style: italic;
 
-    font-family: 'Times New Roman', Times, serif;
-
+  font-family: "Times New Roman", Times, serif;
 }
-.homecontainer{
-    position:fixed;
-    top:0;
-    left: 0;
-     padding-left:5rem;
-   padding-right:5rem;
- margin-left:10rem;
-   margin-right:15rem;
-  
+.homecontainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding-left: 5rem;
+  padding-right: 5rem;
+  margin-left: 10rem;
+  margin-right: 15rem;
 }
-.heading{
-   text-shadow:1px 1px 2px pink;
+.heading {
+  text-shadow: 1px 1px 2px pink;
   padding-top: 1rem;
-    font-style: italic;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    color:rgb(2, 33, 23);
-   
+  font-style: italic;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  color: rgb(2, 33, 23);
 }
 
-.text{
-    padding-top:1rem;
-    font-style: oblique 23deg;
-    font-family: 'Lucida Sans', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+.text {
+  padding-top: 1rem;
+  font-style: oblique 23deg;
+  font-family: "Lucida Sans", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
 }
-.home{
-    width: fit-content;
-
+.home {
+  width: fit-content;
 }
 
-.homebutton{
-    margin-bottom: 5rem;
-    margin-left: 15rem;
- color:#211f20;
-    background-color:#9bbdac;
-    background-image:linear-gradient(to left,  #3b3e3c,#e3ebe3,);
- width:200px;
+.homebutton {
+  margin-bottom: 5rem;
+  margin-left: 15rem;
+  color: #211f20;
+  background-color: #9bbdac;
+  background-image: linear-gradient(to left, #3b3e3c, #e3ebe3);
+  width: 200px;
   font-weight: bolder;
-   font-style: italic ;
-   border-radius:5px;
-   box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  font-style: italic;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }

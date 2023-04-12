@@ -4,96 +4,96 @@ import FaStar from "react-icons/fa";
 import "./review.css";
 import { useMealContext } from "../Context/MealContext";
 const Review = () => {
-    const { currentMeals, dispatchMeals, getMeal } = useMealContext();
-    const history = useHistory();
-    const [rating, setRating] = useState(0);
-    const [error, setError] = useState(false);
-    const INITIAL_STATE = {
-        title: "",
-        description: "",
-    };
-    const [form, setForm] = useState(INITIAL_STATE);
-    const { id } = useParams();
-    const meal = getMeal(id);
-    const handleChange = (e) => {
-        setForm({ ...form, [e.target.id]: e.target.value });
-    };
+  const { currentMeals, dispatchMeals, getMeal } = useMealContext();
+  const history = useHistory();
+  const [rating, setRating] = useState(0);
+  const [error, setError] = useState(false);
+  const INITIAL_STATE = {
+    title: "",
+    description: "",
+  };
+  const [form, setForm] = useState(INITIAL_STATE);
+  const { id } = useParams();
+  const meal = getMeal(id);
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.id]: e.target.value });
+  };
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        form.meal_id = meal.id;
-        form.created_date = new Date().toJSON().slice(0, 10);
-        form.stars = rating;
-        try {
-            const response = await fetch(`api/reviews`, {
-                method: "POST",
-                body: JSON.stringify(form),
-                headers: {
-                    Accept: "application/json",
-                    "Content-Type": "application/json",
-                },
-            });
-            const data = await response.json();
-            setForm(INITIAL_STATE);
-            alert(`Review Sent`);
-        } catch (e) {
-            setError(true);
-            return e.message;
-        }
-        history.push("/meals");
-    };
-    return (
-        <div className="wrapper1">
-            {error && alert("Resquest is not sucessful")}
-            {meal ? (
-                <form onSubmit={handleSubmit}>
-                    <fieldset>
-                        <legend>
-                            <span>Review Form</span>
-                        </legend>
-                        <div className="reviewform">
-                            <label htmlFor="title"></label>
-                            <input
-                                type="text"
-                                required
-                                id="title"
-                                value={form.title}
-                                placeholder="Review Comment"
-                                onChange={handleChange}
-                            ></input>
-                            <label htmlFor="description"></label>
-                            <input
-                                type="text"
-                                required
-                                id="description"
-                                placeholder="Describe in details"
-                                value={form.description}
-                                onChange={handleChange}
-                            ></input>
-                        </div>
-                        {Array.of(1, 2, 3, 4, 5).map((eachStar) => {
-                            return (
-                                <button
-                                    type="button"
-                                    key={eachStar}
-                                    className={eachStar <= rating ? "on" : "off"}
-                                    onClick={() => setRating(eachStar)}
-                                >
-                                    <span className="star">&#9733;</span>
-                                </button>
-                            );
-                        })}
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    form.meal_id = meal.id;
+    form.created_date = new Date().toJSON().slice(0, 10);
+    form.stars = rating;
+    try {
+      const response = await fetch(`api/reviews`, {
+        method: "POST",
+        body: JSON.stringify(form),
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+      });
+      const data = await response.json();
+      setForm(INITIAL_STATE);
+      alert(`Review Sent`);
+    } catch (e) {
+      setError(true);
+      return e.message;
+    }
+    history.push("/meals");
+  };
+  return (
+    <div className="wrapper1">
+      {error && alert("Resquest is not sucessful")}
+      {meal ? (
+        <form onSubmit={handleSubmit}>
+          <fieldset>
+            <legend>
+              <span>Review Form</span>
+            </legend>
+            <div className="reviewform">
+              <label htmlFor="title"></label>
+              <input
+                type="text"
+                required
+                id="title"
+                value={form.title}
+                placeholder="Review Comment"
+                onChange={handleChange}
+              ></input>
+              <label htmlFor="description"></label>
+              <input
+                type="text"
+                required
+                id="description"
+                placeholder="Describe in details"
+                value={form.description}
+                onChange={handleChange}
+              ></input>
+            </div>
+            {Array.of(1, 2, 3, 4, 5).map((eachStar) => {
+              return (
+                <button
+                  type="button"
+                  key={eachStar}
+                  className={eachStar <= rating ? "on" : "off"}
+                  onClick={() => setRating(eachStar)}
+                >
+                  <span className="star">&#9733;</span>
+                </button>
+              );
+            })}
 
-                        <button className="reviewbutton" type="submit">
-                            Leave FeedBack
-                        </button>
-                    </fieldset>
-                </form>
-            ) : (
-                <h3>There is no meal for this specific id</h3>
-            )}
-        </div>
-    );
+            <button className="reviewbutton" type="submit">
+              Leave FeedBack
+            </button>
+          </fieldset>
+        </form>
+      ) : (
+        <h3>There is no meal for this specific id</h3>
+      )}
+    </div>
+  );
 };
 
 export default Review;

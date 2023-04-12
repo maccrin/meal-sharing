@@ -1,6 +1,6 @@
-.footer{
-    font-family: 'Times New Roman', Times, serif;
-     position: fixed;
+.footer {
+  font-family: "Times New Roman", Times, serif;
+  position: fixed;
   background-color: #3b3e3c;
   background-color: rgb(116, 148, 84);
 
@@ -10,7 +10,7 @@
   padding: 8px;
   text-align: center;
 
-      /* background-color: gray;
+  /* background-color: gray;
   text-align: center;
   margin-top: auto;
   padding: 8px; */

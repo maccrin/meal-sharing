@@ -1,50 +1,49 @@
-
 body {
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    color:rgb(238, 249, 245);
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  color: rgb(238, 249, 245);
 }
-legend{
-   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    color:rgb(238, 249, 245);
-    font-family: 'Times New Roman', Times, serif;
-   
+legend {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  color: rgb(238, 249, 245);
+  font-family: "Times New Roman", Times, serif;
 }
-.wrapper{
-    padding: 5rem;
-    margin-top:5rem;
-    text-align: center;
-    color: rgb(5, 28, 21);
-    font-style: italic;
+.wrapper {
+  padding: 5rem;
+  margin-top: 5rem;
+  text-align: center;
+  color: rgb(5, 28, 21);
+  font-style: italic;
 }
-.reviewform{
-   padding-top: 1rem;
-    padding-left: 6.5rem;
+.reviewform {
+  padding-top: 1rem;
+  padding-left: 6.5rem;
   display: grid;
   grid-template-columns: 1fr;
   height: 200px;
-  width:400px;
+  width: 400px;
 }
 button {
   background-color: transparent;
   border: none;
   outline: none;
   cursor: pointer;
-  
 }
 .on {
   height: 30px;
-  width:30px;
+  width: 30px;
   color: #eea60b;
   color: #106037;
 }
 .off {
   height: 30px;
-  width:30px;
+  width: 30px;
   color: white;
 }
-.reviewbutton{
-    margin-top: 1.5rem;
-   color:#1f191c;
-    background-image:linear-gradient(to left,  #3b3e3c,#e3ebe3,);
+.reviewbutton {
+  margin-top: 1.5rem;
+  color: #1f191c;
+  background-image: linear-gradient(to left, #3b3e3c, #e3ebe3);
   color: #827979;
 }
