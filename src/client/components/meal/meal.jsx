@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
 import { useParams, useHistory, Redirect } from "react-router-dom";
+import React, { useContext, useEffect, useState } from "react";
 import { useMealContext } from "../Context/MealContext";
-import EachMealReviewDisplay from "../MealReview/MealReviewDisplay";
+import EachMealReview from "../MealReview/MealReview";
 import "./meal.css";
 const Meal = () => {
   const [availableSlot, setAvailableSlot] = useState([]);
@@ -21,7 +21,9 @@ const Meal = () => {
         });
         if (res.ok) {
           const result = await res.json();
+          console.log(result);
           setAvailableSlot(result[0].available_slot);
+          console.log(result[0].available_slot);
         }
       } catch (e) {
         return e.message;
@@ -43,6 +45,11 @@ const Meal = () => {
       history.push("/meals");
     }
   };
+
+  if (!meal) {
+    return <Redirect to="/" />;
+  }
+
   return (
     <div className="container">
       {meal ? (
@@ -58,7 +65,7 @@ const Meal = () => {
             ) : (
               <p>{`No Slots are avilable`}</p>
             )}
-            <EachMealReviewDisplay meal={meal} />
+            <EachMealReview meal={meal} />
           </fieldset>
           <>
             <div className="mealroute">
@@ -71,7 +78,7 @@ const Meal = () => {
                   history.push(`/review/${meal.id}`);
                 }}
               >
-                Leave The Review
+                Leave a Review
               </button>
             </div>
           </>

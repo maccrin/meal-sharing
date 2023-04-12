@@ -129,8 +129,6 @@ const Meal = () => {
                 state: { data: `${availableSlot}` },
             });
 
-            history.push(`/reservations/${meal.id}/${availableSlot}`);
-
         } else {
             alert(`No Reservation available for this meal`);
             history.push("/meals");
@@ -145,7 +143,6 @@ const Meal = () => {
         <div className="container">
             {meal ? (
                 <>
-
                     <fieldset>
                         <legend> Here Is Your Meal Card</legend>
                         <b>{meal.title}</b>

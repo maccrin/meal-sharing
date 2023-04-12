@@ -24,10 +24,10 @@ ul{
 .nav{
      color:rgb(243, 172, 85);
 }
-li{
+/* li{
      color:rgb(243, 172, 85);
     font-weight: 1000;
-    padding: 3px;
+    padding: 3px;} */
 li{
     font-weight: 800;
     padding: 2px;

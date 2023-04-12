@@ -4,15 +4,6 @@ import './home.css'
 export default function Home() {
     const history = useHistory();
     return (
-        <div className="homecontainer" >
-            <article className="home">
-                <h1 className="heading">Spice a dish with love and it pleases every palate ~ Plautus</h1>
-                <p className="text">
-                    Indian food, not unlike any other country’s national food scene, is a vast constellation of culinary influences and traditions from
-                    all over the Asian continent.
-export default function Home() {
-    const history = useHistory();
-    return (
         <div className="homecontainer">
             <article className="home">
                 <h1 className="heading"> Here To Serve India's Authentic Dishes</h1>
