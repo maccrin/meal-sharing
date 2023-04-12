@@ -6,7 +6,8 @@ import ErrorPage from './components/Error/ErrorPage'
 import MealSort from "./components/MealSort/MealSort"
 import Reservation from './components/Reservation/ReservationForm'
 import Review from './components/Review/ReviewForm'
-import Meal from './components/Meal/Meal'
+// import Meal from './components/Meal/Meal'
+import Meal from './components/Meal/EachMeal'
 import MealList from "./components/MealList/MealList";
 import { MealProvider } from "./components/Context/MealContext";
 import Navigation from "./components/Navigation/Navigation"
